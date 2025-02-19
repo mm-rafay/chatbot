@@ -168,7 +168,13 @@ resources:
     memory: "16012Mi"
 
 copyAppData:
-  resources: {}
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "4Gi"
+    requests:
+      cpu: "500m"
+      memory: "8012Mi"
 
 managedCertificate:
   enabled: false
