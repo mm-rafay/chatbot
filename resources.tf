@@ -61,7 +61,7 @@ resource "rafay_workload" "private-chatbot" {
       type = "Helm"
       artifact{
         values_paths {
-          name = "~/values.yaml"
+          name = "/values.yaml"
         }
         repository = "open-webui"
         chart_name = "open-webui"
