@@ -16,9 +16,9 @@ resource "null_resource" "auth" {
   }
 } */
 
- /* resource "rafay_namespace" "namespace" {
+ resource "rafay_namespace" "namespace" {
     metadata {
-        name    = "chatbot"
+        name    = "private-chatbot"
         project = "gpu-paas-demo"
         labels = {
             "env" = "dev"
@@ -44,7 +44,7 @@ resource "null_resource" "auth" {
             storage_requests = "50Gi"
         }
     }
-} */
+}
 
 resource "rafay_workload" "private-chatbot" {
   metadata {
