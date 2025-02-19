@@ -61,7 +61,7 @@ resource "rafay_workload" "private-chatbot" {
       type = "Helm"
       artifact{
         values_paths {
-          name = "file://home/terraform/app/scratch/job/values.yaml"
+          name = "/home/terraform/app/scratch/job/values.yaml"
         }
         repository = "open-webui"
         chart_name = "open-webui"
