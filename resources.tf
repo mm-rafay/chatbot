@@ -52,7 +52,7 @@ resource "rafay_workload" "private-chatbot" {
     project = "gpu-paas-demo"
   }
   spec {
-    namespace = "c-mm-xl"
+    namespace = "private-chatbot"
     version = "v2"
     placement {
       selector = "rafay.dev/clusterName=gpu-paas-demo-cluster"
