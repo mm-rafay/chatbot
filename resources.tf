@@ -35,10 +35,10 @@ resource "null_resource" "auth" {
             }
         }
         resource_quotas {
-            cpu_limits = "8000m"
-            memory_limits = "16384Mi"
-            cpu_requests = "4000m"
-            memory_requests = "8192Mi"
+            cpu_limits = "8Gi"
+            memory_limits = "16Gi"
+            cpu_requests = "8Gi"
+            memory_requests = "16Gi"
             gpu_requests = "10"
             gpu_limits = "10"
             storage_requests = "50Gi"
