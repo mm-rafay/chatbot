@@ -46,9 +46,9 @@ resource "null_resource" "auth" {
     }
 } */
 
-resource "rafay_workload" "private-chatbot" {
+resource "rafay_workload" "web-chatbot" {
   metadata {
-    name    = "private-chatbot"
+    name    = "web-chatbot"
     project = "gpu-paas-demo"
   }
   spec {
@@ -60,12 +60,12 @@ resource "rafay_workload" "private-chatbot" {
     artifact {
       type = "Helm"
       artifact{
-        // values_paths {
-          // name = "file://values.yaml"
-        // }
+        values_paths {
+          name = "file://values.yaml"
+        }
         repository = "open-webui"
         chart_name = "open-webui"
-        // chart_version = "versionID"
+        chart_version = "5.16.0"
       }
     }
   }
