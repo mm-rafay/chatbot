@@ -159,7 +159,13 @@ startupProbe: {}
 #   periodSeconds: 5
 #   failureThreshold: 20
 
-resources: {}
+resources: 
+  limits:
+    cpu: "2000m"
+    memory: "16Gi"
+  requests:
+    cpu: "1000m"
+    memory: "16012Mi"
 
 copyAppData:
   resources: {}
