@@ -19,7 +19,7 @@ ollama:
         - deepseek-r1:7b
   runtimeClassName: nvidia
   persistentVolume:
-    enabled: true
+    enabled: false
     volumeName: "model-runner-pv"
 
 pipelines:
