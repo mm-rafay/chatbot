@@ -161,20 +161,20 @@ startupProbe: {}
 
 resources: 
   limits:
-    cpu: "2000m"
-    memory: "16Gi"
+    cpu: "4000m"  # You can increase this within quota
+    memory: "16Gi"  # Keep this as 16Gi (within limits)
   requests:
-    cpu: "1000m"
-    memory: "16012Mi"
+    cpu: "2000m"  # Increase within allowed request quota
+    memory: "8Gi"  # **Reduce this from 16Gi to 8Gi**
 
 copyAppData:
   resources:
     limits:
-      cpu: "500m"
-      memory: "4Gi"
+      cpu: "1000m"  # You can increase this within quota
+      memory: "2Gi"  # Keep this as 16Gi (within limits)
     requests:
-      cpu: "500m"
-      memory: "8012Mi"
+      cpu: "500m"  # Increase within allowed request quota
+      memory: "2Gi"  # **Reduce this from 16Gi to 8Gi**
 
 managedCertificate:
   enabled: false
