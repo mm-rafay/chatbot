@@ -21,6 +21,7 @@ ollama:
   persistentVolume:
     enabled: true
     volumeName: "model-runner-pv"
+    size: 10Gi
 
 pipelines:
   # -- Automatically install Pipelines chart to extend Open WebUI functionality using Pipelines: https://github.com/open-webui/pipelines
@@ -196,7 +197,7 @@ ingress:
   existingSecret: ""
 persistence:
   enabled: true
-  size: 2Gi
+  size: 10Gi
   # -- Use existingClaim if you want to re-use an existing Open WebUI PVC instead of creating a new one
   existingClaim: ""
   # -- Subdirectory of Open WebUI PVC to mount. Useful if root directory is not empty.
