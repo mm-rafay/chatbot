@@ -12,11 +12,11 @@ ollama:
       enabled: false
       # type: 'nvidia'
       # number: 1
-    models:
-      pull:
-        - deepseek-r1:7b
-      run:
-        - deepseek-r1:7b
+    models: {}
+      # pull:
+      #   - deepseek-r1:7b
+      # run:
+      #   - deepseek-r1:7b
   runtimeClassName: nvidia
   persistentVolume:
     enabled: false
