@@ -52,7 +52,7 @@ resource "rafay_workload" "web-chatbot" {
     project = "mm-demo"
   }
   spec {
-    namespace = "c-mm-xl"
+    namespace = "default"
     version = "v0"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
