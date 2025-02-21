@@ -31,21 +31,21 @@ spec:
         - name: ollama-volume
           mountPath: /root/.ollama
         tty: true
-        command: ["/bin/sh", "-c"]
-        args:
-          - |
-            # /usr/bin/ollama serve &
-            echo "Starting Ollama in the background..."
-            sleep 15
+        # command: ["/bin/sh", "-c"]
+        # args:
+        #   - |
+        #     # /usr/bin/ollama serve &
+        #     echo "Starting Ollama in the background..."
+        #     sleep 15
             
-            echo "Waiting for Ollama to be ready..."
-            sleep 15
+        #     echo "Waiting for Ollama to be ready..."
+        #     sleep 15
             
-            echo "Pulling model..."
-            ollama pull deepseek-r1:7b
+        #     echo "Pulling model..."
+        #     ollama pull deepseek-r1:7b
             
-            echo "Ollama setup complete." # Running foreground process..."
-            ollama serve &
+        #     echo "Ollama setup complete." # Running foreground process..."
+        #     ollama serve &
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
