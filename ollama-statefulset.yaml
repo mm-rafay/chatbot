@@ -44,8 +44,8 @@ spec:
             echo "Pulling model..."
             ollama pull deepseek-r1:7b
             
-            echo "Ollama setup complete. Running foreground process..."
-            /usr/bin/ollama serve &
+            echo "Ollama setup complete." # Running foreground process..."
+            # /usr/bin/ollama serve &
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
