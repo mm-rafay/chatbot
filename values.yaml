@@ -12,7 +12,7 @@ ollama:
       enabled: false
       # type: 'nvidia'
       # number: 1
-    models: {}
+    models:
       pull:
         - deepseek-r1:7b
       run:
