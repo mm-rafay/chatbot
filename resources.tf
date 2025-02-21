@@ -49,13 +49,13 @@ resource "null_resource" "auth" {
 resource "rafay_workload" "web-chatbot" {
   metadata {
     name    = "web-chatbot"
-    project = "gpu-paas-demo"
+    project = "mm-demo"
   }
   spec {
     namespace = "c-mm-xl"
     version = "v0"
     placement {
-      selector = "rafay.dev/clusterName=gpu-paas-demo-cluster"
+      selector = "rafay.dev/clusterName=mm-nuc"
     }
     artifact {
       type = "Helm"
