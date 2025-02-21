@@ -4,7 +4,7 @@ metadata:
   labels:
     app: private-chatbot
   name: private-chatbot-pvc
-  namespace: private-chatbot
+  namespace: default
 spec:
   accessModes: ["ReadWriteOnce"]
   resources:
