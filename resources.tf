@@ -1,52 +1,4 @@
-/* resource "null_resource" "kubectl" {
-  provisioner "local-exec" {
-    command = "busybox wget -O /tmp/kubectl https://dl.k8s.io/release/v1.32.2/bin/linux/amd64/kubectl && chmod +x /tmp/kubectl && /tmp/kubectl version --client"
-  }
-}
-
-resource "null_resource" "auth" {
-  provisioner "local-exec" {
-    command = "export RCTL_API_SECRET=${var.RCTL_API_SECRET} && export RCTL_API_KEY=${var.RCTL_API_KEY} && export RCTL_REST_ENDPOINT=${var.RCTL_REST_ENDPOINT} && export RCTL_PROJECT=${var.RCTL_PROJECT} && terraform plan"
-  }
-} */
-
-/* resource "null_resource" "pwd" {
-  provisioner "local-exec" {
-    command = "pwd && ls"
-  }
-} */
-
- /* resource "rafay_namespace" "namespace" {
-    metadata {
-        name    = "private-chatbot"
-        project = "gpu-paas-demo"
-        labels = {
-            "env" = "dev"
-        }
-        annotations = {
-            "logging" = "enabled"
-        }
-    }
-    spec {
-        placement {
-            labels {
-            key   = "rafay.dev/clusterName"
-            value = "gpu-paas-demo-cluster"
-            }
-        }
-        resource_quotas {
-            cpu_limits = "8Gi"
-            memory_limits = "16Gi"
-            cpu_requests = "8Gi"
-            memory_requests = "16Gi"
-            gpu_requests = "10"
-            gpu_limits = "10"
-            storage_requests = "50Gi"
-        }
-    }
-} */
-
-resource "rafay_workload" "web-chatbot" {
+/* resource "rafay_workload" "web-chatbot" {
   metadata {
     name    = "web-chatbot"
     project = "mm-demo"
@@ -66,6 +18,174 @@ resource "rafay_workload" "web-chatbot" {
         repository = "open-webui"
         chart_name = "open-webui"
         chart_version = "5.16.0"
+      }
+    }
+  }
+} */
+
+resource "rafay_namespace" "pc-ns" {
+  metadata {
+    name    = "private-chatbot"
+    project = "mm-demo"
+  }
+  spec {
+    drift {
+      enabled = false
+    }
+    placement {
+      labels {
+        key   = "rafay.dev/clusterName"
+        value = "mm-nuc"
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "pc-deployment" {
+  metadata {
+    name    = "pc-deployment"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://pc-deployment.yaml"
+        }
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "pc-pvc" {
+  metadata {
+    name    = "pc-pvc"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://pc-pvc.yaml"
+        }
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "pc-svc" {
+  metadata {
+    name    = "pc-svc"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://pc-svc.yaml"
+        }
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "pc-ingress" {
+  metadata {
+    name    = "pc-ingress"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://pc-ingress.yaml"
+        }
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "ollama-statefulset" {
+  metadata {
+    name    = "ollama-statefulset"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://ollama-statefulset.yaml"
+        }
+      }
+    }
+  }
+}
+
+resource "rafay_workload" "ollama-service" {
+  metadata {
+    name    = "ollama-service"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "private-chatbot"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+      environment {
+          name = "test-env"
+      }
+    }
+    version = "v0"
+    artifact {
+      type = "Yaml"
+      artifact {
+        paths {
+          name = "file://ollama-service.yaml"
+        }
       }
     }
   }
