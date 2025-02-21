@@ -21,12 +21,12 @@ spec:
         - containerPort: 11434
         resources:
           requests:
-            cpu: "2000m"
-            memory: "2Gi"
-          limits:
             cpu: "4000m"
             memory: "4Gi"
-            nvidia.com/gpu: "0"
+          limits:
+            cpu: "8000m"
+            memory: "8Gi"
+            # nvidia.com/gpu: "0"
         volumeMounts:
         - name: ollama-volume
           mountPath: /root/.ollama
@@ -34,11 +34,12 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - |
+            /usr/bin/ollama serve &
             echo "Starting Ollama in the background..."
-            sleep 10
+            sleep 15
             
             echo "Waiting for Ollama to be ready..."
-            sleep 10
+            sleep 15
             
             echo "Pulling model..."
             ollama pull deepseek-r1:7b
