@@ -13,19 +13,19 @@ ollama:
       # type: 'nvidia'
       # number: 1
     models: {}
-      # pull:
-      #   - deepseek-r1:7b
-      # run:
-      #   - deepseek-r1:7b
+      pull:
+        - deepseek-r1:7b
+      run:
+        - deepseek-r1:7b
   runtimeClassName: nvidia
   # persistentVolume:
     # enabled: false
     # volumeName: "model-runner-pv"
     # size: 10Gi
 
-pipelines: {}
+pipelines:
   # -- Automatically install Pipelines chart to extend Open WebUI functionality using Pipelines: https://github.com/open-webui/pipelines
-  # enabled: false
+  enabled: false
   # -- This section can be used to pass required environment variables to your pipelines (e.g. Langfuse hostname)
   # extraEnvVars: []
 
@@ -160,22 +160,10 @@ startupProbe: {}
 #   periodSeconds: 5
 #   failureThreshold: 20
 
-resources: 
-  limits:
-    cpu: "4000Mi"  # You can increase this within quota
-    memory: "16Gi"  # Keep this as 16Gi (within limits)
-  requests:
-    cpu: "2000Mi"  # Increase within allowed request quota
-    memory: "8Gi"  # **Reduce this from 16Gi to 8Gi**
+resources: {}
 
 copyAppData:
-  resources:
-    limits:
-      cpu: "1000Mi"  # You can increase this within quota
-      memory: "2Gi" 
-    requests:
-      cpu: "500Mi"  # Increase within allowed request quota
-      memory: "2Gi" 
+  resources: {}
 
 managedCertificate:
   enabled: false
