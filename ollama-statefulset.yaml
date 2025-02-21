@@ -35,16 +35,16 @@ spec:
         args:
           - |
             echo "Starting Ollama in the background..."
-            /usr/bin/ollama serve &
+            sleep 10
             
             echo "Waiting for Ollama to be ready..."
-            sleep 20
+            sleep 10
             
             echo "Pulling model..."
             ollama pull deepseek-r1:7b
             
             echo "Ollama setup complete. Running foreground process..."
-            wait
+            /usr/bin/ollama serve &
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
