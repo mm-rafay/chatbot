@@ -34,11 +34,17 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - |
-            echo "Waiting for initialization..."
-            sleep 30
+            echo "Starting Ollama in the background..."
+            /usr/bin/ollama serve &
+            
+            echo "Waiting for Ollama to be ready..."
+            sleep 20
+            
             echo "Pulling model..."
             ollama pull deepseek-r1:7b
-            echo "Starting Ollama..."
+            
+            echo "Ollama setup complete. Running foreground process..."
+            wait
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
