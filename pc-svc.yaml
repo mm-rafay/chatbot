@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: private-chatbot-service
-  namespace: private-chatbot
+  namespace: default
 spec:
   type: LoadBalancer  # Use LoadBalancer if you're on a cloud that supports it
   selector:
