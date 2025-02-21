@@ -1,4 +1,4 @@
-resource "rafay_namespace" "pc-ns" {
+/* resource "rafay_namespace" "pc-ns" {
   metadata {
     name    = "private-chatbot"
     project = "mm-demo"
@@ -14,7 +14,7 @@ resource "rafay_namespace" "pc-ns" {
       }
     }
   }
-}
+} */
 
 resource "rafay_workload" "pc-deployment" {
   metadata {
@@ -22,7 +22,7 @@ resource "rafay_workload" "pc-deployment" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
@@ -44,7 +44,7 @@ resource "rafay_workload" "pc-pvc" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
@@ -66,7 +66,7 @@ resource "rafay_workload" "pc-svc" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
@@ -88,7 +88,7 @@ resource "rafay_workload" "pc-ingress" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
@@ -110,7 +110,7 @@ resource "rafay_workload" "ollama-statefulset" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
@@ -132,7 +132,7 @@ resource "rafay_workload" "ollama-service" {
     project = "mm-demo"
   }
   spec {
-    namespace = "private-chatbot"
+    namespace = "default"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
     }
