@@ -34,7 +34,7 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - |
-            /usr/bin/ollama serve &
+            # /usr/bin/ollama serve &
             echo "Starting Ollama in the background..."
             sleep 15
             
@@ -45,7 +45,7 @@ spec:
             ollama pull deepseek-r1:7b
             
             echo "Ollama setup complete." # Running foreground process..."
-            # /usr/bin/ollama serve &
+            ollama serve &
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
