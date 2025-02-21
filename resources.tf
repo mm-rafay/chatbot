@@ -1,28 +1,3 @@
-/* resource "rafay_workload" "web-chatbot" {
-  metadata {
-    name    = "web-chatbot"
-    project = "mm-demo"
-  }
-  spec {
-    namespace = "default"
-    version = "v0"
-    placement {
-      selector = "rafay.dev/clusterName=mm-nuc"
-    }
-    artifact {
-      type = "Helm"
-      artifact{
-        values_paths {
-          name = "file://values.yaml"
-        }
-        repository = "open-webui"
-        chart_name = "open-webui"
-        chart_version = "5.16.0"
-      }
-    }
-  }
-} */
-
 resource "rafay_namespace" "pc-ns" {
   metadata {
     name    = "private-chatbot"
@@ -50,9 +25,6 @@ resource "rafay_workload" "pc-deployment" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -75,9 +47,6 @@ resource "rafay_workload" "pc-pvc" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -100,9 +69,6 @@ resource "rafay_workload" "pc-svc" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -125,9 +91,6 @@ resource "rafay_workload" "pc-ingress" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -150,9 +113,6 @@ resource "rafay_workload" "ollama-statefulset" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -175,9 +135,6 @@ resource "rafay_workload" "ollama-service" {
     namespace = "private-chatbot"
     placement {
       selector = "rafay.dev/clusterName=mm-nuc"
-      environment {
-          name = "test-env"
-      }
     }
     version = "v0"
     artifact {
@@ -190,3 +147,28 @@ resource "rafay_workload" "ollama-service" {
     }
   }
 }
+
+/* resource "rafay_workload" "web-chatbot" {
+  metadata {
+    name    = "web-chatbot"
+    project = "mm-demo"
+  }
+  spec {
+    namespace = "default"
+    version = "v0"
+    placement {
+      selector = "rafay.dev/clusterName=mm-nuc"
+    }
+    artifact {
+      type = "Helm"
+      artifact{
+        values_paths {
+          name = "file://values.yaml"
+        }
+        repository = "open-webui"
+        chart_name = "open-webui"
+        chart_version = "5.16.0"
+      }
+    }
+  }
+} */
