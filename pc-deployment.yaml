@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: private-chatbot-deployment
-  namespace: private-chatbot
+  namespace: default
 spec:
   replicas: 1
   selector:
