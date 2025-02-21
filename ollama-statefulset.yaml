@@ -31,6 +31,11 @@ spec:
         - name: ollama-volume
           mountPath: /root/.ollama
         tty: true
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            ollama pull deepseek-r1:7b
+            exec /usr/bin/ollama
   volumeClaimTemplates:
   - metadata:
       name: ollama-volume
