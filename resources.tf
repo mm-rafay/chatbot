@@ -14,7 +14,7 @@
       }
     }
   }
-} */
+}
 
 resource "rafay_workload" "pc-deployment" {
   metadata {
@@ -102,7 +102,7 @@ resource "rafay_workload" "pc-ingress" {
       }
     }
   }
-}
+} */
 
 resource "rafay_workload" "ollama-statefulset" {
   metadata {
