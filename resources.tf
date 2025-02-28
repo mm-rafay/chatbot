@@ -1,3 +1,9 @@
+resource "null_resource" "deploy" {
+  provisioner "local-exec" {
+    command = "echo "Deploying..."
+  }
+}
+
 /* resource "rafay_namespace" "pc-ns" {
   metadata {
     name    = "private-chatbot"
@@ -16,7 +22,7 @@
   }
 }
 
-resource "rafay_workload" "pc-deployment" {
+/*( resource "rafay_workload" "pc-deployment" {
   metadata {
     name    = "pc-deployment"
     project = "mm-demo"
