@@ -22,7 +22,7 @@ resource "null_resource" "deploy" {
   }
 }
 
-/*( resource "rafay_workload" "pc-deployment" {
+( resource "rafay_workload" "pc-deployment" {
   metadata {
     name    = "pc-deployment"
     project = "mm-demo"
@@ -108,7 +108,7 @@ resource "rafay_workload" "pc-ingress" {
       }
     }
   }
-} */
+}
 
 resource "rafay_workload" "ollama-statefulset" {
   metadata {
@@ -154,7 +154,7 @@ resource "rafay_workload" "ollama-service" {
   }
 }
 
-/* resource "rafay_workload" "web-chatbot" {
+resource "rafay_workload" "web-chatbot" {
   metadata {
     name    = "web-chatbot"
     project = "mm-demo"
